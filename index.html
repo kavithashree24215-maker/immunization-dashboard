@@ -1,0 +1,1381 @@
+None selected 
+
+Skip to content
+Using Gmail with screen readers
+in:sent 
+Conversations
+To: 
+shreekavi24.
+(no subject)
+ 
+Attachment:
+1000005974.jpg
+15:40
+To: 
+shreekavi24.
+(no subject)
+ 
+Attachment:
+immunization-recorder.html
+15:40
+To: 
+shreekavi24.
+(no subject)
+ 
+Attachment:
+Screenshot_20260312_224112.jpg
+11:54
+To: 
+shreekavi24.
+(no subject)
+ 
+Attachment:
+IMG_20260613_094845.jpg
+13 Jun
+23% of 15 GB used
+Terms · Privacy · Programme Policies
+Last account activity: 2 minutes ago
+Details
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VacciCare — Smart Immunization Recorder</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Fredoka+One&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #00BFA6;
+  --teal-dark: #009688;
+  --teal-light: #E0F7FA;
+  --teal-glow: rgba(0,191,166,0.25);
+  --orange: #FF7043;
+  --orange-light: #FFF3E0;
+  --blue: #3D9BD1;
+  --purple: #7C4DFF;
+  --green: #43A047;
+  --red: #E53935;
+  --yellow: #FFB300;
+  --bg: #F0FAFA;
+  --card: #FFFFFF;
+  --dark: #1A3C40;
+  --text: #2E4A4F;
+  --text-light: #7A9E9F;
+  --border: #B2DFDB;
+  --shadow: 0 4px 24px rgba(0,150,136,0.10);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(0,191,166,0.07) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgba(255,112,67,0.05) 0%, transparent 50%);
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #007A6E 0%, #00BFA6 60%, #26C6DA 100%);
+  padding: 0;
+  box-shadow: 0 4px 20px rgba(0,150,136,0.3);
+  position: sticky; top: 0; z-index: 50;
+}
+
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.logo { display: flex; align-items: center; gap: 12px; }
+
+.logo-icon {
+  width: 46px; height: 46px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  backdrop-filter: blur(4px);
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+
+.logo-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.logo-text span { color: #CCFF90; }
+
+.header-right { display: flex; align-items: center; gap: 12px; }
+
+.lang-selector {
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  backdrop-filter: blur(4px);
+}
+
+.lang-selector option { background: #007A6E; color: white; }
+
+.voice-test-btn {
+  background: rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 20px;
+  padding: 7px 16px;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.voice-test-btn:hover { background: rgba(255,255,255,0.3); }
+
+/* TABS */
+.tabs {
+  max-width: 1100px; margin: 0 auto;
+  padding: 24px 24px 0;
+  display: flex; gap: 8px;
+}
+
+.tab {
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s;
+  background: white;
+  color: var(--text-light);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.tab.active {
+  background: var(--teal);
+  color: white;
+  box-shadow: 0 4px 15px var(--teal-glow);
+}
+
+.tab:hover:not(.active) { border-color: var(--teal); color: var(--teal); }
+
+/* MAIN */
+.main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+.page { display: none; }
+.page.active { display: block; }
+
+/* DASHBOARD */
+.welcome-banner {
+  background: linear-gradient(135deg, #00897B, #00BFA6);
+  border-radius: 20px;
+  padding: 28px 32px;
+  color: white;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.welcome-banner::after {
+  content: '💉';
+  position: absolute;
+  right: 20px; bottom: -10px;
+  font-size: 80px;
+  opacity: 0.12;
+}
+
+.welcome-banner h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.welcome-banner p { opacity: 0.85; font-size: 14px; }
+
+.alert-badge {
+  background: var(--orange);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(255,112,67,0.4);
+  cursor: pointer;
+  transition: transform 0.2s;
+  z-index: 1;
+}
+
+.alert-badge:hover { transform: scale(1.05); }
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid transparent;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover { transform: translateY(-2px); }
+.stat-card.teal { border-color: var(--teal); }
+.stat-card.orange { border-color: var(--orange); }
+.stat-card.green { border-color: var(--green); }
+.stat-card.red { border-color: var(--red); }
+
+.stat-icon { font-size: 28px; margin-bottom: 8px; }
+.stat-num { font-family: 'Fredoka One'; font-size: 32px; color: var(--dark); }
+.stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* DUE TODAY */
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  color: var(--dark);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.section-title .pill {
+  background: var(--orange);
+  color: white;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-family: 'Nunito';
+  font-weight: 700;
+}
+
+.due-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+
+.due-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 16px;
+  border-left: 5px solid var(--orange);
+  transition: all 0.25s;
+  animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.due-card.overdue { border-color: var(--red); background: #FFF5F5; }
+.due-card.upcoming { border-color: var(--teal); }
+.due-card.done { border-color: var(--green); opacity: 0.7; }
+
+.due-avatar {
+  width: 50px; height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--teal-light), #B2EBF2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.due-info { flex: 1; }
+.due-name { font-weight: 800; font-size: 16px; color: var(--dark); }
+.due-vaccine { font-size: 14px; color: var(--text-light); margin-top: 2px; }
+.due-date { font-size: 12px; font-family: 'DM Mono'; color: var(--text-light); margin-top: 4px; }
+
+.due-actions { display: flex; gap: 8px; }
+
+.btn-done {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-done:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(67,160,71,0.4); }
+
+.btn-voice {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-voice:hover { transform: scale(1.1); box-shadow: 0 4px 15px var(--teal-glow); }
+.btn-voice.speaking { animation: speak-pulse 0.6s infinite alternate; }
+
+@keyframes speak-pulse {
+  from { transform: scale(1); box-shadow: 0 0 0 0 var(--teal-glow); }
+  to { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(0,191,166,0); }
+}
+
+.status-chip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chip-overdue { background: #FFEBEE; color: var(--red); }
+.chip-today { background: #FFF3E0; color: var(--orange); }
+.chip-upcoming { background: var(--teal-light); color: var(--teal-dark); }
+.chip-done { background: #E8F5E9; color: var(--green); }
+
+/* ADD PATIENT */
+.form-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.form-card h3 {
+  font-family: 'Fredoka One';
+  font-size: 22px;
+  color: var(--dark);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Nunito';
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--teal);
+  background: white;
+  box-shadow: 0 0 0 4px var(--teal-glow);
+}
+
+.form-group select option { background: white; }
+
+.btn-add {
+  background: linear-gradient(135deg, var(--teal), #26C6DA);
+  color: white;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 30px;
+  font-family: 'Fredoka One';
+  font-size: 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 20px var(--teal-glow);
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--teal-glow);
+}
+
+/* VACCINE SCHEDULE TABLE */
+.schedule-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schedule-table th {
+  background: linear-gradient(135deg, var(--teal), #26C6DA);
+  color: white;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.schedule-table th:first-child { border-radius: 10px 0 0 10px; }
+.schedule-table th:last-child { border-radius: 0 10px 10px 0; }
+
+.schedule-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #E0F7FA;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.schedule-table tr:hover td { background: #F0FAFA; }
+
+/* PATIENTS LIST */
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.patient-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--teal);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+.patient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0,150,136,0.15);
+}
+
+.patient-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+
+.patient-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal-light), #B2EBF2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  border: 3px solid var(--teal);
+}
+
+.patient-name { font-weight: 800; font-size: 17px; color: var(--dark); }
+.patient-age { font-size: 13px; color: var(--text-light); }
+
+.vaccine-progress { margin-bottom: 14px; }
+.progress-label {
+  display: flex; justify-content: space-between;
+  font-size: 12px; font-weight: 700; color: var(--text-light);
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  background: var(--teal-light);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, var(--teal), #26C6DA);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s ease;
+}
+
+.next-due {
+  background: #FFF3E0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--orange);
+  font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* VOICE ALERT PANEL */
+.voice-panel {
+  background: linear-gradient(135deg, #00897B, #004D40);
+  border-radius: 20px;
+  padding: 28px;
+  color: white;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.voice-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 70% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
+}
+
+.voice-panel h3 {
+  font-family: 'Fredoka One';
+  font-size: 24px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.voice-panel p { opacity: 0.75; font-size: 14px; margin-bottom: 24px; position: relative; }
+
+.voice-lang-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  position: relative;
+}
+
+.lang-card {
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 14px;
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  backdrop-filter: blur(4px);
+}
+
+.lang-card:hover, .lang-card.playing {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.5);
+  transform: scale(1.05);
+}
+
+.lang-flag { font-size: 28px; margin-bottom: 6px; }
+.lang-name { font-size: 13px; font-weight: 700; }
+.lang-native { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+
+/* SOUND WAVE ANIMATION */
+.sound-wave {
+  display: flex; align-items: center; gap: 3px;
+  justify-content: center;
+  margin-top: 8px;
+  height: 20px;
+}
+
+.wave-bar {
+  width: 3px;
+  background: #CCFF90;
+  border-radius: 2px;
+  animation: wave 1s infinite ease-in-out;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0s; }
+.wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.wave-bar:nth-child(3) { animation-delay: 0.3s; }
+.wave-bar:nth-child(4) { animation-delay: 0.45s; }
+.wave-bar:nth-child(5) { animation-delay: 0.3s; }
+.wave-bar:nth-child(6) { animation-delay: 0.15s; }
+.wave-bar:nth-child(7) { animation-delay: 0s; }
+
+@keyframes wave {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.lang-card:not(.playing) .sound-wave { display: none; }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: white;
+  border-radius: 24px;
+  padding: 36px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--bg); border: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.modal h3 {
+  font-family: 'Fredoka One';
+  font-size: 24px;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--dark);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 14px; font-weight: 600;
+  z-index: 300;
+  transform: translateY(80px);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  max-width: 320px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  display: flex; align-items: center; gap: 10px;
+}
+
+.toast.show { transform: translateY(0); }
+
+/* REMINDER SETTINGS */
+.reminder-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 16px;
+}
+
+.reminder-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.reminder-info { flex: 1; }
+.reminder-title { font-weight: 800; font-size: 15px; color: var(--dark); }
+.reminder-desc { font-size: 13px; color: var(--text-light); margin-top: 3px; }
+
+/* TOGGLE SWITCH */
+.toggle-switch {
+  width: 50px; height: 26px;
+  background: #ccc;
+  border-radius: 13px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.toggle-switch.on { background: var(--teal); }
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 3px; left: 3px;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.toggle-switch.on::after { transform: translateX(24px); }
+
+/* ELDERLY MODE */
+.elderly-banner {
+  background: linear-gradient(135deg, #7C4DFF, #651FFF);
+  border-radius: 20px;
+  padding: 24px 28px;
+  color: white;
+  margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.elderly-banner h3 { font-family: 'Fredoka One'; font-size: 22px; margin-bottom: 6px; }
+.elderly-banner p { opacity: 0.8; font-size: 14px; }
+
+.btn-elderly {
+  background: white;
+  color: #7C4DFF;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s;
+}
+
+.btn-elderly:hover { transform: scale(1.05); }
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-grid { grid-template-columns: 1fr; }
+  .voice-lang-grid { grid-template-columns: repeat(2, 1fr); }
+  .welcome-banner { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">💉</div>
+      <div class="logo-text">Vacci<span>Care</span></div>
+    </div>
+    <div class="header-right">
+      <select class="lang-selector" id="globalLang" onchange="setGlobalLanguage(this.value)">
+        <option value="en">🇬🇧 English</option>
+        <option value="hi">🇮🇳 हिंदी</option>
+        <option value="ta">🇮🇳 தமிழ்</option>
+        <option value="te">🇮🇳 తెలుగు</option>
+        <option value="mr">🇮🇳 मराठी</option>
+        <option value="bn">🇮🇳 বাংলা</option>
+        <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+        <option value="ml">🇮🇳 മലയാളം</option>
+      </select>
+      <button class="voice-test-btn" onclick="speakReminder('demo')">🔊 Test Voice</button>
+    </div>
+  </div>
+</header>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="showPage('dashboard', this)">🏠 Dashboard</div>
+  <div class="tab" onclick="showPage('patients', this)">👶 Patients</div>
+  <div class="tab" onclick="showPage('schedule', this)">📅 Schedule</div>
+  <div class="tab" onclick="showPage('reminders', this)">🔔 Reminders</div>
+  <div class="tab" onclick="showPage('elderly', this)">👴 Elderly Care</div>
+</div>
+
+<div class="main">
+
+<!-- DASHBOARD PAGE -->
+<div class="page active" id="page-dashboard">
+
+  <div class="welcome-banner">
+    <div>
+      <h2>Good Morning, Dr. Sharma! 👋</h2>
+      <p>You have 3 vaccinations due today and 2 overdue alerts</p>
+    </div>
+    <div class="alert-badge" onclick="speakReminder('alert')">🔔 5 Alerts Today</div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card teal">
+      <div class="stat-icon">👶</div>
+      <div class="stat-num">24</div>
+      <div class="stat-label">Total Patients</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="stat-icon">⚠️</div>
+      <div class="stat-num">5</div>
+      <div class="stat-label">Due This Week</div>
+    </div>
+    <div class="stat-card red">
+      <div class="stat-icon">🚨</div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">Overdue</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-icon">✅</div>
+      <div class="stat-num">142</div>
+      <div class="stat-label">Completed</div>
+    </div>
+  </div>
+
+  <div class="section-title">📅 Due Today <span class="pill">3 Pending</span></div>
+
+  <div class="due-cards" id="dueTodayList"></div>
+
+  <div class="section-title">🔊 Voice Reminder Demo</div>
+  <div class="voice-panel">
+    <h3>🌐 Multilingual Voice Alerts</h3>
+    <p>Tap any language to hear the vaccine reminder in that language</p>
+    <div class="voice-lang-grid" id="langGrid"></div>
+  </div>
+
+</div>
+
+<!-- PATIENTS PAGE -->
+<div class="page" id="page-patients">
+
+  <div class="form-card">
+    <h3>➕ Add New Patient</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Child's Name</label>
+        <input type="text" id="childName" placeholder="e.g. Arjun Kumar" />
+      </div>
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="childDOB" />
+      </div>
+      <div class="form-group">
+        <label>Parent Name</label>
+        <input type="text" id="parentName" placeholder="e.g. Suresh Kumar" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="parentPhone" placeholder="+91 98765 43210" />
+      </div>
+      <div class="form-group">
+        <label>Preferred Language</label>
+        <select id="prefLang">
+          <option value="en">English</option>
+          <option value="hi">हिंदी (Hindi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="kn">ಕನ್ನಡ (Kannada)</option>
+          <option value="ml">മലയാളം (Malayalam)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Blood Group</label>
+        <select id="bloodGroup">
+          <option>A+</option><option>A-</option>
+          <option>B+</option><option>B-</option>
+          <option>AB+</option><option>AB-</option>
+          <option>O+</option><option>O-</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addPatient()">➕ Add Patient & Generate Schedule</button>
+  </div>
+
+  <div class="section-title">👶 Registered Patients</div>
+  <div class="patients-grid" id="patientsGrid"></div>
+
+</div>
+
+<!-- SCHEDULE PAGE -->
+<div class="page" id="page-schedule">
+
+  <div class="schedule-card">
+    <div class="section-title">📋 Standard Immunization Schedule (India — IAP)</div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Age</th>
+          <th>Vaccine</th>
+          <th>Disease Protected</th>
+          <th>Doses</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- REMINDERS PAGE -->
+<div class="page" id="page-reminders">
+
+  <div class="section-title">🔔 Reminder Settings</div>
+
+  <div class="reminder-card">
+    <div class="reminder-icon" style="background:#E0F7FA;">📱</div>
+    <div class="reminder-info">
+      <div class="reminder-title">SMS Reminder</div>
+      <div class="reminder-desc">Send SMS to parent 3 days before due date</div>
+    </div>
+    <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+  </div>
+
+  <div class="reminder-card">
+    <div class="reminder-icon" style="background:#F3E5F5;">🔊</div>
+    <div class="reminder-info">
+      <div class="reminder-title">Voice Call Alert</div>
+      <div class="reminder-desc">Auto voice call in parent's preferred language</div>
+    </div>
+    <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+  </div>
+
+  <div class="reminder-card">
+    <div class="reminder-icon" style="background:#E8F5E9;">💬</div>
+    <div class="reminder-info">
+      <div class="reminder-title">WhatsApp Message</div>
+      <div class="reminder-desc">Send WhatsApp reminder with vaccine details</div>
+    </div>
+    <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+  </div>
+
+  <div class="reminder-card">
+    <div class="reminder-icon" style="background:#FFF3E0;">⏰</div>
+    <div class="reminder-info">
+      <div class="reminder-title">Overdue Alert</div>
+      <div class="reminder-desc">Alert doctor if vaccine is 7+ days overdue</div>
+    </div>
+    <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+  </div>
+
+  <div class="reminder-card">
+    <div class="reminder-icon" style="background:#FCE4EC;">👴</div>
+    <div class="reminder-info">
+      <div class="reminder-title">Elderly Medicine Reminder</div>
+      <div class="reminder-desc">Daily voice reminder for senior patients at set time</div>
+    </div>
+    <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+  </div>
+
+  <div class="reminder-card">
+    <div class="reminder-icon" style="background:#E3F2FD;">📅</div>
+    <div class="reminder-info">
+      <div class="reminder-title">Advance Reminder (1 Week)</div>
+      <div class="reminder-desc">Remind parents 7 days before due date</div>
+    </div>
+    <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
+  </div>
+
+  <br>
+  <div class="section-title">🔊 Test Voice Reminder Now</div>
+  <div class="voice-panel">
+    <h3>Live Voice Demo 🎙️</h3>
+    <p>Select a language and hear the reminder message your patients will receive</p>
+    <div class="voice-lang-grid" id="langGrid2"></div>
+  </div>
+
+</div>
+
+<!-- ELDERLY PAGE -->
+<div class="page" id="page-elderly">
+
+  <div class="elderly-banner">
+    <div>
+      <h3>👴 Elderly Care Module</h3>
+      <p>Special voice-based medicine reminders for senior patients who may forget medications</p>
+    </div>
+    <button class="btn-elderly" onclick="speakReminder('elderly')">▶ Hear Demo</button>
+  </div>
+
+  <div class="section-title">💊 Elderly Patients & Medicine Schedule</div>
+
+  <div class="due-cards" id="elderlyList"></div>
+
+  <div class="form-card" style="margin-top:24px;">
+    <h3>➕ Add Elderly Patient</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Patient Name</label>
+        <input type="text" id="elderName" placeholder="e.g. Ramesh Rao" />
+      </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" id="elderAge" placeholder="e.g. 68" />
+      </div>
+      <div class="form-group">
+        <label>Medicine Name</label>
+        <input type="text" id="elderMed" placeholder="e.g. Metformin 500mg" />
+      </div>
+      <div class="form-group">
+        <label>Reminder Time</label>
+        <input type="time" id="elderTime" value="08:00" />
+      </div>
+      <div class="form-group">
+        <label>Preferred Language</label>
+        <select id="elderLang">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="ta">தமிழ்</option>
+          <option value="te">తెలుగు</option>
+          <option value="mr">मराठी</option>
+          <option value="bn">বাংলা</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Frequency</label>
+        <select>
+          <option>Once daily</option>
+          <option>Twice daily</option>
+          <option>Three times daily</option>
+          <option>Weekly</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-add" onclick="addElderlyPatient()">➕ Add & Set Reminder</button>
+  </div>
+
+</div>
+
+</div><!-- end main -->
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ===================== DATA =====================
+const vaccineSchedule = [
+  { age: "At Birth", vaccine: "BCG + OPV0 + Hep B1", disease: "TB, Polio, Hepatitis B", doses: 1, notes: "Within 24 hrs of birth" },
+  { age: "6 Weeks", vaccine: "DTwP1 / DTaP1 + IPV1 + Hib1 + Hep B2 + Rota1 + PCV1", disease: "Diphtheria, Tetanus, Whooping Cough, Polio, Pneumonia", doses: 1, notes: "Start primary series" },
+  { age: "10 Weeks", vaccine: "DTwP2 / DTaP2 + IPV2 + Hib2 + Rota2 + PCV2", disease: "Diphtheria, Tetanus, Pertussis, Polio", doses: 1, notes: "2nd dose primary" },
+  { age: "14 Weeks", vaccine: "DTwP3 / DTaP3 + IPV3 + Hib3 + Hep B3 + Rota3 + PCV3", disease: "Complete primary series", doses: 1, notes: "3rd dose — complete primary" },
+  { age: "6 Months", vaccine: "OPV1 + Influenza 1", disease: "Polio, Influenza", doses: 1, notes: "Oral polio + flu" },
+  { age: "9 Months", vaccine: "MMR1 + OPV2 + Typhoid", disease: "Measles, Mumps, Rubella, Typhoid", doses: 1, notes: "After 9 months" },
+  { age: "12 Months", vaccine: "Hep A1 + Varicella 1", disease: "Hepatitis A, Chickenpox", doses: 1, notes: "1 year milestone" },
+  { age: "15 Months", vaccine: "MMR2 + Varicella 2 + PCV Booster", disease: "MMR booster, Chickenpox, Pneumonia", doses: 1, notes: "Booster doses" },
+  { age: "18 Months", vaccine: "DTwP B1 + IPV B1 + Hib B1 + Hep A2", disease: "Booster: Diphtheria, Tetanus, Polio, Hib", doses: 1, notes: "18-month boosters" },
+  { age: "2 Years", vaccine: "Typhoid Booster", disease: "Typhoid", doses: 1, notes: "Every 3 years after" },
+  { age: "4–6 Years", vaccine: "DTwP B2 + OPV B + MMR3", disease: "Pre-school boosters", doses: 1, notes: "Before school entry" },
+  { age: "10–12 Years", vaccine: "Tdap + HPV (Girls) + Meningococcal", disease: "Tetanus, Pertussis, Cervical Cancer, Meningitis", doses: "2–3", notes: "Adolescent vaccines" },
+];
+
+const dueTodayData = [
+  { name: "Arjun Kumar", age: "6 weeks", vaccine: "DTwP1 + IPV1 + Hib1", date: "Today", status: "today", emoji: "👶" },
+  { name: "Priya Sharma", age: "9 months", vaccine: "MMR1 + OPV2", date: "Today", status: "today", emoji: "👧" },
+  { name: "Rohan Patel", age: "15 months", vaccine: "MMR2 + Varicella 2", date: "3 days ago", status: "overdue", emoji: "👦" },
+  { name: "Meera Singh", age: "6 weeks", vaccine: "BCG + OPV0", date: "Yesterday", status: "overdue", emoji: "👶" },
+  { name: "Kavya Nair", age: "12 months", vaccine: "Hep A1 + Varicella 1", date: "Tomorrow", status: "upcoming", emoji: "👧" },
+];
+
+let patients = [
+  { name: "Arjun Kumar", dob: "2024-11-15", parent: "Suresh Kumar", phone: "+91 98765 43210", lang: "hi", blood: "O+", progress: 30 },
+  { name: "Priya Sharma", dob: "2024-03-10", parent: "Anita Sharma", phone: "+91 87654 32109", lang: "ta", blood: "A+", progress: 65 },
+  { name: "Rohan Patel", dob: "2023-09-20", parent: "Vijay Patel", phone: "+91 76543 21098", lang: "mr", blood: "B+", progress: 80 },
+];
+
+let elderlyPatients = [
+  { name: "Ramesh Rao", age: 72, medicine: "Metformin 500mg", time: "08:00 AM", lang: "te", frequency: "Twice daily" },
+  { name: "Kamala Devi", age: 68, medicine: "Amlodipine 5mg", time: "09:00 AM", lang: "hi", frequency: "Once daily" },
+];
+
+const languages = [
+  { code: "en", name: "English", native: "English", flag: "🇬🇧" },
+  { code: "hi", name: "Hindi", native: "हिंदी", flag: "🇮🇳" },
+  { code: "ta", name: "Tamil", native: "தமிழ்", flag: "🇮🇳" },
+  { code: "te", name: "Telugu", native: "తెలుగు", flag: "🇮🇳" },
+  { code: "mr", name: "Marathi", native: "मराठी", flag: "🇮🇳" },
+  { code: "bn", name: "Bengali", native: "বাংলা", flag: "🇮🇳" },
+  { code: "kn", name: "Kannada", native: "ಕನ್ನಡ", flag: "🇮🇳" },
+  { code: "ml", name: "Malayalam", native: "മലയാളം", flag: "🇮🇳" },
+];
+
+const voiceMessages = {
+  en: { vaccine: "Hello! This is a reminder that your child's vaccination is due today. Please visit the clinic at your earliest convenience.", elderly: "Good morning! It is time to take your medicine. Please do not forget to take your Metformin tablet." },
+  hi: { vaccine: "नमस्ते! यह एक अनुस्मारक है कि आपके बच्चे का टीकाकरण आज देय है। कृपया जल्द से जल्द क्लीनिक आएं।", elderly: "सुप्रभात! अपनी दवाई लेने का समय हो गया है। कृपया मेटफॉर्मिन की गोली लेना न भूलें।" },
+  ta: { vaccine: "வணக்கம்! உங்கள் குழந்தையின் தடுப்பூசி இன்று நிலுவையில் உள்ளது. தயவுசெய்து கிளினிக்கிற்கு வாருங்கள்.", elderly: "காலை வணக்கம்! உங்கள் மருந்து எடுக்கும் நேரம் ஆயிற்று. மெட்ஃபார்மின் மாத்திரை எடுக்க மறவாதீர்கள்." },
+  te: { vaccine: "నమస్కారం! మీ పిల్లల టీకా నేడు రావాలి. దయచేసి వీలైనంత త్వరగా క్లినిక్‌కు రండి.", elderly: "శుభోదయం! మీ మందు తీసుకునే సమయం వచ్చింది. మెట్‌ఫార్మిన్ మాత్రను తీసుకోవడం మర్చిపోవద్దు." },
+  mr: { vaccine: "नमस्कार! आपल्या मुलाचे लसीकरण आज देय आहे. कृपया लवकरात लवकर क्लिनिकला भेट द्या.", elderly: "सुप्रभात! आपली औषधे घेण्याची वेळ झाली आहे. मेटफॉर्मिन गोळी घेण्यास विसरू नका." },
+  bn: { vaccine: "নমস্কার! আপনার শিশুর টিকা আজ দেওয়া দরকার। অনুগ্রহ করে যত তাড়াতাড়ি সম্ভব ক্লিনিকে আসুন।", elderly: "শুভ সকাল! আপনার ওষুধ খাওয়ার সময় হয়েছে। মেটফরমিন ট্যাবলেট খেতে ভুলবেন না।" },
+  kn: { vaccine: "ನಮಸ್ಕಾರ! ನಿಮ್ಮ ಮಗುವಿನ ಲಸಿಕೆ ಇಂದು ಸಲ್ಲಿಸಬೇಕಾಗಿದೆ. ದಯವಿಟ್ಟು ಆದಷ್ಟು ಬೇಗ ಕ್ಲಿನಿಕ್‌ಗೆ ಬನ್ನಿ.", elderly: "ಶುಭೋದಯ! ನಿಮ್ಮ ಔಷಧಿ ತೆಗೆದುಕೊಳ್ಳುವ ಸಮಯ ಬಂದಿದೆ. ಮೆಟ್‌ಫಾರ್ಮಿನ್ ಮಾತ್ರೆ ತೆಗೆದುಕೊಳ್ಳಲು ಮರೆಯಬೇಡಿ." },
+  ml: { vaccine: "നമസ്കാരം! നിങ്ങളുടെ കുട്ടിക്ക് ഇന്ന് വാക്സിൻ നൽകേണ്ടതാണ്. ദയവായി ക്ലിനിക്കിൽ വരൂ.", elderly: "സുപ്രഭാതം! മരുന്ന് കഴിക്കേണ്ട സമയമായി. മെറ്റ്ഫോർമിൻ ഗോളി കഴിക്കാൻ മറക്കരുത്." },
+};
+
+let currentLang = 'en';
+
+// ===================== SPEECH =====================
+function speak(text, lang) {
+  if (!window.speechSynthesis) { showToast("⚠️ Speech not supported in this browser"); return; }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = getLangCode(lang);
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+  window.speechSynthesis.speak(utterance);
+}
+
+function getLangCode(code) {
+  const map = { en: 'en-IN', hi: 'hi-IN', ta: 'ta-IN', te: 'te-IN', mr: 'mr-IN', bn: 'bn-IN', kn: 'kn-IN', ml: 'ml-IN' };
+  return map[code] || 'en-IN';
+}
+
+function speakReminder(type) {
+  const lang = currentLang;
+  let msg = '';
+  if (type === 'demo') msg = voiceMessages[lang]?.vaccine || voiceMessages['en'].vaccine;
+  else if (type === 'alert') msg = voiceMessages[lang]?.vaccine || voiceMessages['en'].vaccine;
+  else if (type === 'elderly') msg = voiceMessages[lang]?.elderly || voiceMessages['en'].elderly;
+  speak(msg, lang);
+  showToast(`🔊 Playing in ${languages.find(l=>l.code===lang)?.name || 'English'}`);
+}
+
+function speakLang(code, type, cardEl) {
+  document.querySelectorAll('.lang-card').forEach(c => c.classList.remove('playing'));
+  cardEl.classList.add('playing');
+  const msg = voiceMessages[code]?.[type] || voiceMessages['en'][type];
+  speak(msg, code);
+  showToast(`🔊 Speaking in ${languages.find(l=>l.code===code)?.name}...`);
+  setTimeout(() => cardEl.classList.remove('playing'), 5000);
+}
+
+function setGlobalLanguage(lang) {
+  currentLang = lang;
+  showToast(`🌐 Language set to ${languages.find(l=>l.code===lang)?.name}`);
+}
+
+// ===================== RENDER =====================
+function renderLangGrids() {
+  ['langGrid', 'langGrid2'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = languages.map(l => `
+      <div class="lang-card" onclick="speakLang('${l.code}', 'vaccine', this)" id="lc-${id}-${l.code}">
+        <div class="lang-flag">${l.flag}</div>
+        <div class="lang-name">${l.name}</div>
+        <div class="lang-native">${l.native}</div>
+        <div class="sound-wave">
+          ${[1,2,3,4,5,6,7].map(()=>`<div class="wave-bar"></div>`).join('')}
+        </div>
+      </div>
+    `).join('');
+  });
+}
+
+function renderDueToday() {
+  document.getElementById('dueTodayList').innerHTML = dueTodayData.map(d => `
+    <div class="due-card ${d.status}">
+      <div class="due-avatar">${d.emoji}</div>
+      <div class="due-info">
+        <div class="due-name">${d.name}</div>
+        <div class="due-vaccine">💉 ${d.vaccine}</div>
+        <div class="due-date">📅 ${d.date} · Age: ${d.age}</div>
+      </div>
+      <div class="due-actions">
+        <span class="status-chip chip-${d.status}">${d.status === 'today' ? '⏰ Today' : d.status === 'overdue' ? '🚨 Overdue' : '📅 Soon'}</span>
+        <button class="btn-voice" onclick="speakDueReminder('${d.name}', '${d.vaccine}')" title="Voice Reminder">🔊</button>
+        <button class="btn-done" onclick="markDone(this, '${d.name}')">✓ Done</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function speakDueReminder(name, vaccine) {
+  const lang = currentLang;
+  const msgs = {
+    en: `Reminder for ${name}: ${vaccine} vaccination is due today. Please visit the clinic.`,
+    hi: `${name} के लिए अनुस्मारक: ${vaccine} का टीकाकरण आज होना है। कृपया क्लीनिक आएं।`,
+    ta: `${name} க்கான நினைவூட்டல்: ${vaccine} தடுப்பூசி இன்று நிலுவையில் உள்ளது.`,
+    te: `${name} కోసం రిమైండర్: ${vaccine} టీకా నేడు రావాలి.`,
+    mr: `${name} साठी स्मरणपत्र: ${vaccine} लसीकरण आज देय आहे.`,
+    bn: `${name} এর জন্য স্মরণিকা: ${vaccine} টিকা আজ দেওয়া দরকার।`,
+    kn: `${name} ಗಾಗಿ ನೆನಪಿಕೆ: ${vaccine} ಲಸಿಕೆ ಇಂದು ಸಲ್ಲಿಸಬೇಕಾಗಿದೆ.`,
+    ml: `${name} ന് ഓർമ്മപ്പെടുത്തൽ: ${vaccine} വാക്സിൻ ഇന്ന് നൽകേണ്ടതാണ്.`,
+  };
+  speak(msgs[lang] || msgs['en'], lang);
+  showToast(`🔊 Voice reminder sent for ${name}`);
+}
+
+function markDone(btn, name) {
+  btn.textContent = '✅ Done!';
+  btn.style.background = '#43A047';
+  btn.disabled = true;
+  showToast(`✅ ${name}'s vaccination marked as complete!`);
+}
+
+function renderScheduleTable() {
+  document.getElementById('scheduleTable').innerHTML = vaccineSchedule.map((v, i) => `
+    <tr>
+      <td><strong>${v.age}</strong></td>
+      <td style="color:var(--teal-dark);font-weight:700;">${v.vaccine}</td>
+      <td style="color:var(--text-light);">${v.disease}</td>
+      <td style="text-align:center;">${v.doses}</td>
+      <td style="color:var(--text-light);font-size:13px;">${v.notes}</td>
+    </tr>
+  `).join('');
+}
+
+function renderPatients() {
+  document.getElementById('patientsGrid').innerHTML = patients.map((p, i) => {
+    const age = getAge(p.dob);
+    const nextVaccine = getNextVaccine(age);
+    return `
+    <div class="patient-card">
+      <div class="patient-header">
+        <div class="patient-avatar">👶</div>
+        <div>
+          <div class="patient-name">${p.name}</div>
+          <div class="patient-age">Age: ${age} · ${p.blood} · ${languages.find(l=>l.code===p.lang)?.native || p.lang}</div>
+        </div>
+      </div>
+      <div class="vaccine-progress">
+        <div class="progress-label"><span>Vaccination Progress</span><span>${p.progress}%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${p.progress}%"></div></div>
+      </div>
+      <div class="next-due">⏰ Next: ${nextVaccine}</div>
+      <div style="margin-top:12px;display:flex;gap:8px;">
+        <button class="btn-done" style="flex:1;font-size:12px;" onclick="speakDueReminder('${p.name}','next vaccine')">🔊 Voice Alert</button>
+        <button class="btn-voice" onclick="showToast('📋 ${p.name} full history coming soon!')">📋</button>
+      </div>
+    </div>
+  `}).join('');
+}
+
+function renderElderlyList() {
+  document.getElementById('elderlyList').innerHTML = elderlyPatients.map((e, i) => `
+    <div class="due-card upcoming">
+      <div class="due-avatar">👴</div>
+      <div class="due-info">
+        <div class="due-name">${e.name} (Age ${e.age})</div>
+        <div class="due-vaccine">💊 ${e.medicine} · ${e.frequency}</div>
+        <div class="due-date">⏰ ${e.time} · Language: ${languages.find(l=>l.code===e.lang)?.native || e.lang}</div>
+      </div>
+      <div class="due-actions">
+        <button class="btn-voice" onclick="speakElderlyReminder('${e.name}','${e.medicine}','${e.lang}')">🔊</button>
+        <button class="btn-done">✓ Taken</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function speakElderlyReminder(name, medicine, lang) {
+  const msgs = {
+    en: `Good day ${name}! It is time to take your ${medicine}. Please take it with a glass of water.`,
+    hi: `${name} जी! आपकी ${medicine} लेने का समय हो गया है। कृपया एक गिलास पानी के साथ लें।`,
+    ta: `${name}! உங்கள் ${medicine} எடுக்கும் நேரம் ஆயிற்று. ஒரு கிளாஸ் தண்ணீருடன் எடுங்கள்.`,
+    te: `${name} గారూ! మీ ${medicine} తీసుకునే సమయం వచ్చింది. దయచేసి ఒక గ్లాసు నీళ్ళతో తీసుకోండి.`,
+    mr: `${name}! तुमची ${medicine} घेण्याची वेळ झाली आहे. एक ग्लास पाण्यासोबत घ्या.`,
+    bn: `${name}! আপনার ${medicine} খাওয়ার সময় হয়েছে। এক গ্লাস জলের সাথে নিন।`,
+  };
+  speak(msgs[lang] || msgs['en'], lang);
+  showToast(`🔊 Elderly reminder for ${name} in ${languages.find(l=>l.code===lang)?.name}`);
+}
+
+function getAge(dob) {
+  const d = new Date(dob);
+  const now = new Date();
+  const months = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+  if (months < 2) return `${Math.floor(months * 4.3)} weeks`;
+  if (months < 24) return `${months} months`;
+  return `${Math.floor(months / 12)} years`;
+}
+
+function getNextVaccine(age) {
+  if (age.includes('weeks')) return 'DTwP1 + IPV1 + Hib1';
+  if (age.includes('months')) {
+    const m = parseInt(age);
+    if (m < 6) return 'DTwP2 + IPV2 + Hib2';
+    if (m < 9) return 'OPV1 + Influenza';
+    if (m < 12) return 'MMR1 + OPV2';
+    return 'Hep A1 + Varicella 1';
+  }
+  return 'Typhoid Booster';
+}
+
+function addPatient() {
+  const name = document.getElementById('childName').value;
+  const dob = document.getElementById('childDOB').value;
+  const parent = document.getElementById('parentName').value;
+  const phone = document.getElementById('parentPhone').value;
+  const lang = document.getElementById('prefLang').value;
+  const blood = document.getElementById('bloodGroup').value;
+
+  if (!name || !dob) { showToast('⚠️ Please fill name and date of birth'); return; }
+
+  patients.push({ name, dob, parent, phone, lang, blood, progress: 0 });
+  renderPatients();
+  document.getElementById('childName').value = '';
+  document.getElementById('childDOB').value = '';
+  document.getElementById('parentName').value = '';
+  document.getElementById('parentPhone').value = '';
+
+  showToast(`✅ ${name} added! Vaccination schedule generated.`);
+  speakDueReminder(name, 'BCG + OPV0');
+}
+
+function addElderlyPatient() {
+  const name = document.getElementById('elderName').value;
+  const age = document.getElementById('elderAge').value;
+  const medicine = document.getElementById('elderMed').value;
+  const time = document.getElementById('elderTime').value;
+  const lang = document.getElementById('elderLang').value;
+
+  if (!name || !medicine) { showToast('⚠️ Please fill name and medicine'); return; }
+
+  elderlyPatients.push({ name, age: parseInt(age), medicine, time, lang, frequency: 'Once daily' });
+  renderElderlyList();
+  document.getElementById('elderName').value = '';
+  document.getElementById('elderMed').value = '';
+
+  showToast(`✅ ${name} added with daily reminder!`);
+  setTimeout(() => speakElderlyReminder(name, medicine, lang), 1000);
+}
+
+function showPage(name, tabEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  tabEl.classList.add('active');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ===================== INIT =====================
+renderDueToday();
+renderScheduleTable();
+renderPatients();
+renderElderlyList();
+renderLangGrids();
+
+// Auto-speak welcome after 2 sec
+setTimeout(() => {
+  showToast('💉 VacciCare loaded! Select a language and test voice alerts.');
+}, 1500);
+</script>
+</body>
+</html>
+immunization-recorder.html
+Details panel collapsed.
